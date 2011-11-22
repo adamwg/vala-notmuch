@@ -197,7 +197,7 @@ class AddressMatcher {
 		return return_value;
 	}
 
-	public void run(string? name) {
+	public int run(string? name) {
 		Query*[3] queries = {};
 
 		/* Open the database */
@@ -233,11 +233,12 @@ class AddressMatcher {
 		foreach (string addr in result) {
 			stdout.printf("%s\n", addr); 
 		}
+
+		return result.length;
 	}
 } /*End of class AddressMatcher*/
 
 public static int main(string[] args) {
 	var app = new AddressMatcher();
-	app.run(args[1]);
-	return 0;
+	return app.run(args[1]);
 }
